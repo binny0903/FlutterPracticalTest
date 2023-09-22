@@ -73,7 +73,7 @@ class _UserDetailState extends State<UserDetailScreen> {
                 height: 20,
               ),
               CustomText(
-                title: "${userDetail!.firstName} ${userDetail!.lastName}",
+                title: "${userDetail!.username}",
                 color: ConstColors.colorBlack,
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
@@ -88,29 +88,191 @@ class _UserDetailState extends State<UserDetailScreen> {
                 fontWeight: FontWeight.normal,
               ),
               const SizedBox(
-                height: 5,
+                height: 4,
               ),
-              Card(
-                color: ConstColors.colorWhite,
-                shadowColor: ConstColors.colorLightGrey,
-                elevation: 10,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(4),
-                ),
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                child: Column(
-                  children: [
-                    CustomText(
-                      title: "Bank Details",
-                      color: ConstColors.colorBlack,
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ],
-                ),
+              CustomText(
+                title: "ssn: ${userDetail!.ssn}",
+                color: ConstColors.colorGrey,
+                fontSize: 12,
+                fontWeight: FontWeight.normal,
               ),
+              const SizedBox(
+                height: 20,
+              ),
+              _headerText("Personal Details"),
+              _personalDetails(userDetail!),
+              const SizedBox(
+                height: 20,
+              ),
+              _headerText("Company Details"),
+              _companyDetails(userDetail!),
+              const SizedBox(
+                height: 20,
+              ),
+              _headerText("Bank Details"),
+              _bankDetails(userDetail!),
             ],
           ),
+        ),
+      ),
+    );
+  }
+
+// Bank details
+  Widget _bankDetails(Users user) {
+    return Container(
+      height: 200,
+      width: double.infinity,
+      padding: const EdgeInsets.all(30),
+      decoration: BoxDecoration(
+          gradient: const LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [
+              Color.fromARGB(255, 63, 27, 242),
+              Color.fromARGB(255, 61, 27, 182),
+              Color.fromARGB(255, 66, 68, 114),
+              Color.fromARGB(255, 174, 157, 105),
+            ],
+          ),
+          borderRadius: BorderRadius.circular(16)),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          _bankCardText("${user.bank!.cardType}", 18),
+          const Spacer(),
+          _bankCardText("${user.bank!.iban}", 16),
+          _bankCardText("${user.bank!.cardExpire}", 12),
+          Row(
+            children: [
+              _bankCardText("${user.bank!.currency}", 22),
+              const Spacer(),
+              Stack(
+                children: List.generate(
+                  2,
+                  (index) => Container(
+                    margin: EdgeInsets.only(left: (15 * index).toDouble()),
+                    height: 30,
+                    width: 30,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(100),
+                        color: Colors.white54),
+                  ),
+                ),
+              )
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _companyDetails(Users user) {
+    return SizedBox(
+      width: MediaQuery.of(context).size.width,
+      child: Card(
+        color: ConstColors.colorWhite,
+        shadowColor: ConstColors.colorLightGrey,
+        elevation: 4,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(4),
+        ),
+        margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _companyTextView(
+              "Department: ${user.company!.department}",
+            ),
+            _companyTextView(
+              "Name: ${user.company!.name}",
+            ),
+            _companyTextView(
+              "Title: ${user.company!.title}",
+            ),
+            _companyTextView(
+              "Address: ${user.company!.address!.address}, ${user.company!.address!.city}, ${user.company!.address!.state}, ${user.company!.address!.postalCode}",
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _bankCardText(String label, double size) {
+    return Text(label, style: TextStyle(fontSize: size, color: Colors.white));
+  }
+
+  Widget _headerText(String label) {
+    return Align(
+      alignment: Alignment.topLeft,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+        child: CustomText(
+          title: label,
+          color: ConstColors.colorBlack,
+          fontSize: 18,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+    );
+  }
+
+  Widget _companyTextView(String label) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 2),
+      child: CustomText(
+        title: label,
+        color: ConstColors.colorBlack,
+        fontSize: 16,
+        fontWeight: FontWeight.normal,
+      ),
+    );
+  }
+
+  Widget _personalDetails(Users user) {
+    return SizedBox(
+      width: MediaQuery.of(context).size.width,
+      child: Card(
+        color: ConstColors.colorWhite,
+        shadowColor: ConstColors.colorLightGrey,
+        elevation: 4,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(4),
+        ),
+        margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _companyTextView(
+              "Full Name: ${user.firstName} ${user.maidenName} ${user.lastName}",
+            ),
+            _companyTextView(
+              "Gender: ${user.gender}",
+            ),
+            _companyTextView(
+              "Phone Number: ${user.phone}",
+            ),
+            _companyTextView(
+              "Birth Date: ${user.birthDate}",
+            ),
+            _companyTextView(
+              "Age: ${user.age}",
+            ),
+            _companyTextView(
+              "Address: ${user.address!.address}, ${user.address!.city}, ${user.address!.state}, ${user.address!.city}",
+            ),
+            _companyTextView(
+              "University: ${user.university}",
+            ),
+            _companyTextView(
+              "Blood Group: ${user.bloodGroup}",
+            ),
+            _companyTextView(
+              "Height: ${user.height}   Weight: ${user.weight}",
+            ),
+          ],
         ),
       ),
     );

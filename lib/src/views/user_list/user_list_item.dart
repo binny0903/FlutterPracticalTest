@@ -77,7 +77,7 @@ class UserListItem extends StatelessWidget {
                         _spaces(),
                         CustomText(
                           title:
-                              "${user.address!.address}, ${user.address!.city}, ${user.address!.postalCode}",
+                              "Address: ${user.address!.address}, ${user.address!.city}, ${user.address!.postalCode}",
                           maxLine: 2,
                           color: ConstColors.colorBlack,
                           fontSize: 12,
