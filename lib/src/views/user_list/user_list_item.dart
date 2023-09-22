@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_practical/src/constants/const_colors.dart';
+import 'package:flutter_practical/src/constants/const_strings.dart';
 import 'package:flutter_practical/src/constants/custom_text.dart';
 import 'package:flutter_practical/src/models/UserList.dart';
 import 'package:flutter_practical/src/views/user_list/user_detail_screen.dart';
@@ -47,7 +48,7 @@ class UserListItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   _loadImage(user.image!),
-                  const SizedBox(width: 20),
+                  const SizedBox(width: 16),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -69,7 +70,7 @@ class UserListItem extends StatelessWidget {
                         ),
                         _spaces(),
                         CustomText(
-                          title: "ssn: ${user.ssn}",
+                          title: "${ConstStrings.ssn}: ${user.ssn}",
                           color: ConstColors.colorBlack,
                           fontSize: 12,
                           fontWeight: FontWeight.normal,
@@ -77,7 +78,7 @@ class UserListItem extends StatelessWidget {
                         _spaces(),
                         CustomText(
                           title:
-                              "Address: ${user.address!.address}, ${user.address!.city}, ${user.address!.postalCode}",
+                              "${ConstStrings.address}: ${user.address!.address}, ${user.address!.city}, ${user.address!.postalCode}",
                           maxLine: 2,
                           color: ConstColors.colorBlack,
                           fontSize: 12,

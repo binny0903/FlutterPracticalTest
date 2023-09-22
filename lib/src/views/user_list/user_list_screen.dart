@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_practical/src/constants/const_colors.dart';
+import 'package:flutter_practical/src/constants/const_strings.dart';
 import 'package:flutter_practical/src/constants/custom_text.dart';
 import 'package:flutter_practical/src/view_models/user_view_model.dart';
 import 'package:flutter_practical/src/views/user_list/user_list.dart';
@@ -19,7 +20,7 @@ class _UserListScreenState extends State<UserListScreen>{
    return Scaffold(
     resizeToAvoidBottomInset: false,
     appBar: AppBar(
-      title: _appBarText(title : "User List"),
+      title: _appBarText(title : ConstStrings.userList),
       centerTitle: true,
       backgroundColor: ConstColors.colorBlack,
       titleTextStyle: const TextStyle(color: ConstColors.colorWhite),

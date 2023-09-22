@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_practical/src/constants/const_colors.dart';
+import 'package:flutter_practical/src/constants/const_strings.dart';
 import 'package:flutter_practical/src/constants/custom_text.dart';
 import 'package:flutter_practical/src/models/UserList.dart';
 
@@ -36,7 +37,7 @@ class _UserDetailState extends State<UserDetailScreen> {
         titleTextStyle: const TextStyle(color: ConstColors.colorWhite),
         backgroundColor: ConstColors.colorBlack,
         title: const CustomText(
-          title: "User Detail",
+          title: ConstStrings.userDetail,
           color: ConstColors.colorWhite,
           fontSize: 20,
           fontWeight: FontWeight.bold,
@@ -91,7 +92,7 @@ class _UserDetailState extends State<UserDetailScreen> {
                 height: 4,
               ),
               CustomText(
-                title: "ssn: ${userDetail!.ssn}",
+                title: "${ConstStrings.ssn}: ${userDetail!.ssn}",
                 color: ConstColors.colorGrey,
                 fontSize: 12,
                 fontWeight: FontWeight.normal,
@@ -99,17 +100,17 @@ class _UserDetailState extends State<UserDetailScreen> {
               const SizedBox(
                 height: 20,
               ),
-              _headerText("Personal Details"),
+              _headerText(ConstStrings.personalDetail),
               _personalDetails(userDetail!),
               const SizedBox(
                 height: 20,
               ),
-              _headerText("Company Details"),
+              _headerText(ConstStrings.companyDetail),
               _companyDetails(userDetail!),
               const SizedBox(
                 height: 20,
               ),
-              _headerText("Bank Details"),
+              _headerText(ConstStrings.bankDetail),
               _bankDetails(userDetail!),
             ],
           ),
@@ -183,16 +184,16 @@ class _UserDetailState extends State<UserDetailScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _companyTextView(
-              "Department: ${user.company!.department}",
+              "${ConstStrings.department}: ${user.company!.department}",
             ),
             _companyTextView(
-              "Name: ${user.company!.name}",
+              "${ConstStrings.name}: ${user.company!.name}",
             ),
             _companyTextView(
-              "Title: ${user.company!.title}",
+              "${ConstStrings.title}: ${user.company!.title}",
             ),
             _companyTextView(
-              "Address: ${user.company!.address!.address}, ${user.company!.address!.city}, ${user.company!.address!.state}, ${user.company!.address!.postalCode}",
+              "${ConstStrings.address}: ${user.company!.address!.address}, ${user.company!.address!.city}, ${user.company!.address!.state}, ${user.company!.address!.postalCode}",
             ),
           ],
         ),
@@ -246,31 +247,31 @@ class _UserDetailState extends State<UserDetailScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _companyTextView(
-              "Full Name: ${user.firstName} ${user.maidenName} ${user.lastName}",
+              "${ConstStrings.fullName}: ${user.firstName} ${user.maidenName} ${user.lastName}",
             ),
             _companyTextView(
-              "Gender: ${user.gender}",
+              "${ConstStrings.gender}: ${user.gender}",
             ),
             _companyTextView(
-              "Phone Number: ${user.phone}",
+              "${ConstStrings.phoneNumber}: ${user.phone}",
             ),
             _companyTextView(
-              "Birth Date: ${user.birthDate}",
+              "${ConstStrings.birthDate}: ${user.birthDate}",
             ),
             _companyTextView(
-              "Age: ${user.age}",
+              "${ConstStrings.age}: ${user.age}",
             ),
             _companyTextView(
-              "Address: ${user.address!.address}, ${user.address!.city}, ${user.address!.state}, ${user.address!.city}",
+              "${ConstStrings.address}: ${user.address!.address}, ${user.address!.city}, ${user.address!.state}, ${user.address!.city}",
             ),
             _companyTextView(
-              "University: ${user.university}",
+              "${ConstStrings.university}: ${user.university}",
             ),
             _companyTextView(
-              "Blood Group: ${user.bloodGroup}",
+              "${ConstStrings.bloodGroup}: ${user.bloodGroup}",
             ),
             _companyTextView(
-              "Height: ${user.height}   Weight: ${user.weight}",
+              "${ConstStrings.height}: ${user.height}   ${ConstStrings.weight}: ${user.weight}",
             ),
           ],
         ),
